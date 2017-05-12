@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="2dp"
+        android:background="@color/gray">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+                <ImageButton
+                    android:id="@+id/vol_u"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_edit" />
+                <!--<ImageButton-->
+                    <!--android:id="@+id/Prof_workexpe"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:src="@drawable/ic_delete"-->
+                    <!--android:paddingRight="2dp"/>-->
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="left">
+
+            <TextView
+                android:id="@+id/v_organisation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="organisation"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/v_role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="role" />
+            <TextView
+                android:id="@+id/v_cause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="cause" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/v_sdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingRight="5dp"
+                    android:text="company" />
+                <TextView
+                    android:id="@+id/_compay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="to" />
+                <TextView
+                    android:id="@+id/v_tdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="enddate" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/v_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="description" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

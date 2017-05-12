@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_expandable_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/bg_login">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            tools:layout_editor_absoluteY="91dp"
+            tools:layout_editor_absoluteX="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/cirle_img"
+                app:civ_border_width="3dp"
+                app:civ_border_color="@color/white"
+                android:src="@drawable/user_logo"
+                android:background="@drawable/circle"
+                tools:layout_conversion_absoluteX="154dp"
+                tools:layout_conversion_absoluteY="15dp"
+                tools:layout_conversion_absoluteWidth="80dp"
+                tools:layout_conversion_absoluteHeight="80dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintVertical_bias="0.02"
+                android:layout_marginBottom="8dp" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/camera"
+                android:layout_marginTop="66dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="0.6" />
+
+
+            <Button
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="save"
+                android:layout_marginRight="27dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="58dp"
+                app:layout_constraintLeft_toRightOf="@+id/imageButton"
+                android:layout_marginLeft="8dp" />
+
+            <ExpandableListView
+                android:id="@+id/activity_expandable_list_view"
+                android:layout_width="318dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:childDivider="#00000000"
+                android:divider="#00000000"
+                android:dividerHeight="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:footerDividersEnabled="true"
+                android:headerDividersEnabled="true"
+                android:listSelector="#00ffffff"
+                android:nestedScrollingEnabled="true"
+                android:scrollIndicators="right"
+                android:transcriptMode="alwaysScroll"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cirle_img" />
+
+        </android.support.constraint.ConstraintLayout>
+</ScrollView>
+
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:id="@+id/activity_expandable_scroll_view"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:fillViewport="true"-->
+<!--android:background="@color/bg_register">-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="368dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--tools:layout_editor_absoluteY="91dp"-->
+        <!--tools:layout_editor_absoluteX="10dp">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_marginBottom="5dp">-->
+            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:id="@+id/cirle_img"-->
+                <!--app:siBorderWidth="1dp"-->
+                <!--android:src="@drawable/user_logo"-->
+                <!--android:background="@drawable/circle"-->
+                <!--app:siBorderColor="@color/darkgray"/>-->
+
+        <!--</LinearLayout>-->
+    <!--</android.support.v7.widget.CardView>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--tools:layout_editor_absoluteX="8dp"-->
+        <!--tools:layout_editor_absoluteY="191dp">-->
+
+        <!--<android.support.v7.widget.CardView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="0dp"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp">-->
+
+            <!--<ExpandableListView-->
+                <!--android:id="@+id/activity_expandable_list_view"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/circleView"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:childDivider="#00000000"-->
+                <!--android:divider="#00000000"-->
+                <!--android:dividerHeight="10dp"-->
+                <!--android:focusable="false"-->
+                <!--android:focusableInTouchMode="false"-->
+                <!--android:footerDividersEnabled="true"-->
+                <!--android:headerDividersEnabled="true"-->
+                <!--android:indicatorRight="@dimen/abc_action_bar_default_height_material"-->
+                <!--android:listSelector="#00ffffff"-->
+                <!--android:nestedScrollingEnabled="true"-->
+                <!--android:scrollIndicators="right"-->
+                <!--android:transcriptMode="alwaysScroll"-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+        <!--</android.support.v7.widget.CardView>-->
+    <!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
+<!--</ScrollView>-->

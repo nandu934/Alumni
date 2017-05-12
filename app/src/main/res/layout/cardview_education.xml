@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        app:cardCornerRadius="2dp"
+        android:background="@color/gray">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true">
+                <ImageButton
+                    android:id="@+id/update_edu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_edit" />
+
+                <!--<ImageButton-->
+                    <!--android:id="@+id/Prof_workexpe"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:paddingRight="2dp"-->
+                    <!--android:src="@drawable/ic_delete" />-->
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/e_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="school"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/e_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="degree" />
+
+            <TextView
+                android:id="@+id/e_fos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="field of study" />
+
+            <TextView
+                android:id="@+id/e_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="grade" />
+
+            <TextView
+                android:id="@+id/e_activities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="activities" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <TextView
+                    android:id="@+id/e_sdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingRight="5dp"
+                    android:text="company" />
+
+                <TextView
+                    android:id="@+id/_co"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="to" />
+
+                <TextView
+                    android:id="@+id/e_tdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="company" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/e_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:text="description" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+<!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="4dp"-->
+    <!--app:cardCornerRadius="2dp"-->
+    <!--android:background="@color/btn_logut_bg">-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+        <!--<TextView-->
+            <!--android:id="@+id/textView5"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingLeft="15dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:text="Experience"-->
+            <!--android:textSize="18dp" />-->
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/workexp_recycler"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="8dp">-->
+        <!--</android.support.v7.widget.RecyclerView>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/text"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="top"-->
+            <!--android:paddingLeft="15dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:text="Education"-->
+            <!--android:textSize="18dp"/>-->
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/edu_recycler"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="8dp"-->
+            <!--android:layout_marginTop="15dp">-->
+
+        <!--</android.support.v7.widget.RecyclerView>-->
+    <!--</LinearLayout>-->
+<!--</android.support.v7.widget.CardView>-->
+
+
+
+
+</LinearLayout>

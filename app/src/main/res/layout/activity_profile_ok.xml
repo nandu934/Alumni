@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/connectoin"
+    tools:context=".activity.Profile_ok">
+
+    <!--<include layout="@layout/content_prof_ok" />-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="5dp"
+        android:src="@android:drawable/ic_input_add" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/connectoin">
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/topPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/layoutTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"></RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/layoutTop">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        app:cardBackgroundColor="@color/gray"
+                        app:cardCornerRadius="2dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:id="@+id/intr"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="50dp"
+                                android:paddingRight="50dp"
+                                android:paddingTop="20dp"
+                                android:text="intro" />
+
+                            <ImageButton
+                                android:id="@+id/prof_intro"
+                                android:layout_width="30dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:background="@color/gray"
+                                android:src="@drawable/ic_edit" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </RelativeLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cirle_im"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_above="@id/layoutBottom"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="-40dp"
+                    android:background="@drawable/circle"
+                    android:src="@drawable/user_logo"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="3dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/bottomPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/gray"
+                        app:cardCornerRadius="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:background="@color/gray">
+
+                                <TextView
+                                    android:id="@+id/textView5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="15dp"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="15dp"
+                                    android:text="Experience"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+                                <!--<ImageButton-->
+                                    <!--android:id="@+id/Prof_workexp"-->
+                                    <!--android:layout_width="30dp"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:layout_alignParentRight="true"-->
+                                    <!--android:layout_centerInParent="true"-->
+                                    <!--android:background="@color/white"-->
+                                    <!--android:src="@drawable/ic_edit" />-->
+
+                                <ImageButton
+                                    android:id="@+id/profexp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:background="@color/gray"
+                                    android:src="@drawable/ic_add"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginRight="10dp"/>
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/workexp_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp">
+                            </android.support.v7.widget.RecyclerView>
+
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:background="@color/gray">
+
+                                <TextView
+                                    android:id="@+id/textView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="15dp"
+                                    android:paddingLeft="15dp"
+                                    android:paddingTop="15dp"
+                                    android:text="Education"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+                                <ImageButton
+                                    android:id="@+id/profedu"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/ic_add"
+                                    android:layout_marginRight="10dp"/>
+
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/edu_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_marginTop="15dp">
+
+                            </android.support.v7.widget.RecyclerView>
+
+                            <!--<View-->
+                                <!--android:id="@+id/view1"-->
+                                <!--android:layout_width="fill_parent"-->
+                                <!--android:layout_height="1dp"-->
+                                <!--android:background="@color/gray" />-->
+
+                            <!--<Button-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:background="@color/white"-->
+                                <!--android:text="see more"-->
+                                <!--android:textColor="@color/bg_login" />-->
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        app:cardCornerRadius="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:background="@color/gray">
+
+                        <TextView
+                            android:id="@+id/texiew"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="15dp"
+                            android:text="Volunteer Experience"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:paddingLeft="15dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentStart="true" />
+
+                        <ImageButton
+                        android:id="@+id/profvol"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/gray"
+                        android:src="@drawable/ic_add"
+                        android:layout_marginRight="10dp"/>
+                    </RelativeLayout>
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/volexp_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="15dp">
+                    </android.support.v7.widget.RecyclerView>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        app:cardCornerRadius="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="35dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:background="@color/gray">
+
+                                <TextView
+                                    android:id="@+id/texew"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="15dp"
+                                    android:paddingTop="15dp"
+                                    android:text="Skills"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold"
+                                    android:paddingLeft="15dp"/>
+
+                                <ImageButton
+                                    android:id="@+id/profskill"
+                                    android:layout_width="30dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:background="@color/gray"
+                                    android:src="@drawable/ic_add"
+                                    android:layout_marginRight="10dp"/>
+                            </RelativeLayout>
+                            <View
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/gray" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/skill_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_marginTop="15dp">
+                            </android.support.v7.widget.RecyclerView>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

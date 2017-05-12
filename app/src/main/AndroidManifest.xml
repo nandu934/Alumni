@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.user.alumni">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".app.AppController"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.Dark"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
+
+        <activity android:name=".activity.ProfileActivity" />
+        <activity
+            android:name=".activity.Prof_Introduction"
+            android:label="Introduction" />
+        <activity
+            android:name=".activity.Prof_WorkEx"
+            android:label="Experience" />
+        <activity
+            android:name=".activity.Prof_Education"
+            android:label="Education" />
+        <activity
+            android:name=".activity.Prof_VolunteerExp"
+            android:label="Volunteer Experience" />
+        <activity
+            android:name=".activity.Prof_Skills"
+            android:label="Skills" />
+        <activity android:name=".activity.UnderDevelopement" />
+        <activity android:name=".activity.Main_settings" />
+        <activity android:name=".event.Event_MainActivity" />
+        <activity android:name=".activity.Forgotpwd" />
+        <activity android:name=".activity.Newactivity" />
+        <activity
+            android:name=".activity.MyProfile"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.Profile_ok" />
+        <activity android:name=".activity.Exp_Edu" />
+        <activity android:name=".activity.Exp_return" />
+        <activity android:name=".activity.Edu_return" />
+        <activity
+            android:name=".activity.Update_workexp"
+            android:label="Experience" />
+        <activity
+            android:name=".activity.Update_edu"
+            android:label="Education" />
+        <activity
+            android:name=".activity.Update_vol"
+            android:label="Volunteer Experience" />
+        <activity
+            android:name=".activity.Update_skill"
+            android:label="Skills" />
+        <activity
+            android:name=".activity.Prof_Introduction_2"
+            android:label="Introduction" />
+        <activity
+            android:name=".activity.Prof_WorkEx_2"
+            android:label="Experience" />
+        <activity
+            android:name=".activity.Prof_Education_2"
+            android:label="Education" />
+        <activity
+            android:name=".activity.Prof_VolunteerExp_2"
+            android:label="Volunteer Experience" />
+        <activity
+            android:name=".activity.Prof_Skills_2"
+            android:label="Skills" />
+        <activity android:name=".activity.Create_Event"></activity>
+    </application>
+
+</manifest>
