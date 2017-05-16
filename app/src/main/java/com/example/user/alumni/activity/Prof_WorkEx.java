@@ -231,6 +231,7 @@ public class Prof_WorkEx extends AppCompatActivity implements View.OnClickListen
             myCalendar1.set(Calendar.MONTH, monthOfYear);
             myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             updateLabel2();
+            updateLabel1();
         }
     };
     public String updateLabel1() {

@@ -28,9 +28,11 @@ import android.widget.Toast;
 import com.example.user.alumni.R;
 import com.example.user.alumni.activity.Create_Event;
 import com.example.user.alumni.activity.MainActivity;
-import com.example.user.alumni.activity.Profile_ok;
 import com.example.user.alumni.fragment.Create_Evnt_Frag;
+import com.stacktips.view.CalendarListener;
+import com.stacktips.view.CustomCalendarView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,9 +41,6 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 
 public class Event_MainActivity extends AppCompatActivity {
 
@@ -56,6 +55,7 @@ public class Event_MainActivity extends AppCompatActivity {
     private TextView calendarNameTxtView;
     private Hashtable hashTable;
     private String calendarName;
+    private CustomCalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,42 @@ public class Event_MainActivity extends AppCompatActivity {
             if (verifyPermission()) return;
         }
         startAddEventService();
+
+
+
+        //Initialize CustomCalendarView from layout
+        calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
+
+        //Initialize calendar with date
+        Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
+
+        //Show Monday as first date of week
+        calendarView.setFirstDayOfWeek(Calendar.MONDAY);
+
+        //Show/hide overflow days of a month
+        calendarView.setShowOverflowDate(false);
+
+        //call refreshCalendar to update calendar the view
+        calendarView.refreshCalendar(currentCalendar);
+
+        //Handling custom calendar events
+        calendarView.setCalendarListener(new CalendarListener() {
+            @Override
+            public void onDateSelected(Date date) {
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                Toast.makeText(Event_MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(Event_MainActivity.this, Create_Event.class);
+                i.putExtra("DATE",df.format(date));
+                startActivity(i);
+            }
+
+            @Override
+            public void onMonthChanged(Date date) {
+                SimpleDateFormat df = new SimpleDateFormat("MM-yyyy");
+                Toast.makeText(Event_MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void openCalendar(View view) {
@@ -97,11 +133,6 @@ public class Event_MainActivity extends AppCompatActivity {
         ContentUris.appendId(builder, startMillis);
         Intent intent = new Intent(Intent.ACTION_VIEW).setData(builder.build());
         startActivity(intent);
-    }
-
-    public void newActivity(View view){
-        Intent i = new Intent(this, Create_Event.class);
-        startActivity(i);
     }
 
     public void makeNewCalendarEntry(String title,
@@ -151,7 +182,6 @@ public class Event_MainActivity extends AppCompatActivity {
                 reminders.put(CalendarContract.Reminders.EVENT_ID, eventID);
                 reminders.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT);
                 reminders.put(CalendarContract.Reminders.MINUTES, selectedReminderValue);
-
                 Uri uri2 = cr.insert(CalendarContract.Reminders.CONTENT_URI, reminders);
             }
         }
