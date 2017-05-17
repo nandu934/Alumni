@@ -89,8 +89,6 @@ public class Event_MainActivity extends AppCompatActivity {
         }
         startAddEventService();
 
-
-
         //Initialize CustomCalendarView from layout
         calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
 
