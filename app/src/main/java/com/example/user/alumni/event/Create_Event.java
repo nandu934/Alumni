@@ -1,20 +1,16 @@
-package com.example.user.alumni.activity;
+package com.example.user.alumni.event;
 
-import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.user.alumni.R;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class Create_Event extends AppCompatActivity {
 

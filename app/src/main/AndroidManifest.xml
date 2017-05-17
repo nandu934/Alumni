@@ -107,7 +107,7 @@
         <activity
             android:name=".activity.Prof_Skills_2"
             android:label="Skills" />
-        <activity android:name=".activity.Create_Event"></activity>
+        <activity android:name=".event.Create_Event"></activity>
     </application>
 
 </manifest>
