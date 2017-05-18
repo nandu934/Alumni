@@ -1,6 +1,10 @@
 package com.example.user.alumni.event;
 
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,13 +13,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.user.alumni.R;
+import com.example.user.alumni.app.SharedPrefManager;
+import com.example.user.alumni.service.MyFirebaseInstanceIDService;
 
 import java.util.Calendar;
 
 public class Create_Event extends AppCompatActivity {
 
     private EditText edittext,ed_time;
-    private TextView tv;
+    private TextView tv1;
+    private BroadcastReceiver broadcastReceiver;
     private int mYear, mMonth, mDay, mHour, mMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +55,15 @@ public class Create_Event extends AppCompatActivity {
                 mTimePicker.show();
             }
         });
+
+        tv1 = (TextView) findViewById(R.id.tv);
+        tv1.setText(SharedPrefManager.getInstance(Create_Event.this).getDeviceToken());
+//        broadcastReceiver = new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                tv1.setText(SharedPrefManager.getInstance(Create_Event.this).getDeviceToken());
+//            }
+//        };
+//        registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIDService.TOKEN_BROADCAST));
     }
 }

@@ -103,6 +103,8 @@ public class Event_MainActivity extends AppCompatActivity {
         //call refreshCalendar to update calendar the view
         calendarView.refreshCalendar(currentCalendar);
 
+
+        calendarView.refreshCalendar(currentCalendar);
         //Handling custom calendar events
         calendarView.setCalendarListener(new CalendarListener() {
             @Override

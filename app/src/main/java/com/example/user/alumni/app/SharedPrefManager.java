@@ -38,5 +38,6 @@ public class SharedPrefManager {
     public String getDeviceToken(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return  sharedPreferences.getString(TAG_TOKEN, null);
+
     }
 }
