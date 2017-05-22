@@ -22,10 +22,13 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.alumni.R;
+import com.example.user.alumni.activity.AppPrefManager;
 import com.example.user.alumni.activity.MainActivity;
 import com.example.user.alumni.fragment.Create_Evnt_Frag;
 import com.stacktips.view.CalendarListener;
@@ -53,43 +56,26 @@ public class Event_MainActivity extends AppCompatActivity {
     private static final String TAG = "CalendarTest";
     private TextView calendarNameTxtView;
     private Hashtable hashTable;
-    private String calendarName;
+    private String calendarName,email,admin;
     private CustomCalendarView calendarView;
+    private Button opencal;
+    private LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event__main);
 
-        btn = (Button) findViewById(R.id.frag);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                Create_Evnt_Frag ev = new Create_Evnt_Frag();
-//                fragmentTransaction.add(R.id.your_placeholder,ev,"hello");
-//                fragmentTransaction.commit();
+        calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
+        opencal = (Button) findViewById(R.id.openCalendarBtn);
+        email = AppPrefManager.getPrefEmail(Event_MainActivity.this);
+        admin = "nandu934@gmail.com";
+        Log.v("email1",email);
+        Log.v("email2",admin);
 
-                // Begin the transaction
-                android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                // Replace the contents of the container with the new fragment
-                ft.add(R.id.your_placeholder, new Create_Evnt_Frag());
-                // or ft.replace(R.id.your_placeholder, new FooFragment());
-                // Complete the changes added above
-                ft.commit();
-            }
-        });
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        calendarNameTxtView = (TextView) findViewById(R.id.calendarNameTxtView);
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (verifyPermission()) return;
-        }
-        startAddEventService();
 
         //Initialize CustomCalendarView from layout
-        calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
+        //calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
 
         //Initialize calendar with date
         Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
@@ -123,6 +109,41 @@ public class Event_MainActivity extends AppCompatActivity {
                 Toast.makeText(Event_MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        if(email.equals(admin)){
+            calendarView.setVisibility(View.VISIBLE);
+        } else {
+            opencal.setVisibility(View.VISIBLE);
+        }
+
+
+        btn = (Button) findViewById(R.id.frag);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                Create_Evnt_Frag ev = new Create_Evnt_Frag();
+//                fragmentTransaction.add(R.id.your_placeholder,ev,"hello");
+//                fragmentTransaction.commit();
+
+                // Begin the transaction
+                android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                // Replace the contents of the container with the new fragment
+                ft.add(R.id.your_placeholder, new Create_Evnt_Frag());
+                // or ft.replace(R.id.your_placeholder, new FooFragment());
+                // Complete the changes added above
+                ft.commit();
+            }
+        });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        calendarNameTxtView = (TextView) findViewById(R.id.calendarNameTxtView);
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (verifyPermission()) return;
+        }
+        startAddEventService();
     }
 
     public void openCalendar(View view) {

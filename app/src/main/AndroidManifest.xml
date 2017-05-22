@@ -22,20 +22,14 @@
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <service android:name=".service.MyFirebaseMessagingService">
+        <service
+            android:name=".service.MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
-        <service android:name=".service.MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 
@@ -52,7 +46,8 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
-        <activity android:name=".activity.ProfileActivity" />
+        <activity
+            android:name=".activity.ProfileActivity" />
         <activity
             android:name=".activity.Prof_Introduction"
             android:label="Introduction" />
@@ -68,19 +63,28 @@
         <activity
             android:name=".activity.Prof_Skills"
             android:label="Skills" />
-        <activity android:name=".activity.UnderDevelopement" />
-        <activity android:name=".activity.Main_settings" />
-        <activity android:name=".event.Event_MainActivity" />
-        <activity android:name=".activity.Forgotpwd" />
-        <activity android:name=".activity.Newactivity" />
+        <activity
+            android:name=".activity.UnderDevelopement" />
+        <activity
+            android:name=".activity.Main_settings" />
+        <activity
+            android:name=".event.Event_MainActivity" />
+        <activity
+            android:name=".activity.Forgotpwd" />
+        <activity
+            android:name=".activity.Newactivity" />
         <activity
             android:name=".activity.MyProfile"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.Profile_ok" />
-        <activity android:name=".activity.Exp_Edu" />
-        <activity android:name=".activity.Exp_return" />
-        <activity android:name=".activity.Edu_return" />
+        <activity
+            android:name=".activity.Profile_ok" />
+        <activity
+            android:name=".activity.Exp_Edu" />
+        <activity
+            android:name=".activity.Exp_return" />
+        <activity
+            android:name=".activity.Edu_return" />
         <activity
             android:name=".activity.Update_workexp"
             android:label="Experience" />
@@ -108,7 +112,9 @@
         <activity
             android:name=".activity.Prof_Skills_2"
             android:label="Skills" />
-        <activity android:name=".event.Create_Event"></activity>
+        <activity
+            android:name=".event.Create_Event"
+            android:label="Event"/>
     </application>
 
 </manifest>

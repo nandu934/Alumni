@@ -2,20 +2,13 @@ package com.example.user.alumni.event;
 
 import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
 import com.example.user.alumni.R;
-import com.example.user.alumni.app.SharedPrefManager;
-import com.example.user.alumni.service.MyFirebaseInstanceIDService;
-
 import java.util.Calendar;
 
 public class Create_Event extends AppCompatActivity {
@@ -56,8 +49,8 @@ public class Create_Event extends AppCompatActivity {
             }
         });
 
-        tv1 = (TextView) findViewById(R.id.tv);
-        tv1.setText(SharedPrefManager.getInstance(Create_Event.this).getDeviceToken());
+        //tv1 = (TextView) findViewById(R.id.tv);
+        //tv1.setText(SharedPrefManager.getInstance(Create_Event.this).getDeviceToken());
 //        broadcastReceiver = new BroadcastReceiver() {
 //            @Override
 //            public void onReceive(Context context, Intent intent) {

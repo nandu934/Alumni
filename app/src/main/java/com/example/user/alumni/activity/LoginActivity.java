@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+                AppPrefManager.setPrefEmail(LoginActivity.this, email);
 
                 // Check for empty data in the form
                 if (!email.isEmpty() && !password.isEmpty()) {

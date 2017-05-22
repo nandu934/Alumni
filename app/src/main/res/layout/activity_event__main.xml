@@ -19,42 +19,44 @@
             android:text=" " />
 
         <Button
-            android:layout_below="@+id/calendarNameTxtView"
-            android:id="@+id/openCalendarBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/open_calendar"
-            android:visibility="gone"
-            android:onClick="openCalendar"/>
-
-        <Button
             android:id="@+id/frag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="new activity"
             android:visibility="gone"/>
-    <com.stacktips.view.CustomCalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:calendarBackgroundColor="@color/white"
-        app:calendarTitleTextColor="@color/black"
-        app:currentDayOfMonthColor="@color/colorPrimaryDark"
-        app:dayOfMonthTextColor="@color/black"
-        app:dayOfWeekTextColor="@color/black"
-        app:disabledDayBackgroundColor="@color/white"
-        app:disabledDayTextColor="@color/gray"
-        app:selectedDayBackgroundColor="@color/blue"
-        app:titleLayoutBackgroundColor="@color/white"
-        app:weekLayoutBackgroundColor="@color/white">
-    </com.stacktips.view.CustomCalendarView>
+
+        <Button
+            android:id="@+id/openCalendarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendarNameTxtView"
+            android:onClick="openCalendar"
+            android:text="@string/open_calendar"
+            android:visibility="gone" />
+
+        <com.stacktips.view.CustomCalendarView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:calendarBackgroundColor="@color/white"
+            app:calendarTitleTextColor="@color/black"
+            app:currentDayOfMonthColor="@color/colorPrimaryDark"
+            app:dayOfMonthTextColor="@color/black"
+            app:dayOfWeekTextColor="@color/black"
+            app:disabledDayBackgroundColor="@color/white"
+            app:disabledDayTextColor="@color/gray"
+            app:selectedDayBackgroundColor="@color/blue"
+            app:titleLayoutBackgroundColor="@color/white"
+            app:weekLayoutBackgroundColor="@color/white">
+        </com.stacktips.view.CustomCalendarView>
 
         <FrameLayout
             android:id="@+id/your_placeholder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
         </FrameLayout>
 </LinearLayout>

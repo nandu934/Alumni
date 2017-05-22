@@ -253,7 +253,6 @@ public class MyProfile extends AppCompatActivity {
                         etEmail.setText(AppPrefManager.getPrefEmail(MyProfile.this));
                         etGender.setText(AppPrefManager.getPrefGender(MyProfile.this));
                         etMobile.setText(AppPrefManager.getPrefMobile(MyProfile.this));
-
                         // Launch main activity
                         //Intent intent = new Intent(MyProfile.this,MainActivity.class);
                         //startActivity(intent);
