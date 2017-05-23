@@ -65,6 +65,9 @@ public class AppPrefManager {
     //AppPrefManager.setPrefName(MainActivity.this, name);
     //etUserName.setText(AppPrefManager.getPrefName(MyProfile.this));
 
+    //https://www.simplifiedcoding.net/android-login-example-using-php-mysql-and-volley/
+    //https://www.simplifiedcoding.net/android-volley-tutorial-to-get-json-from-server/
+
     public static String getPrefAge(Context context){
         return getSharedPreferences(context).getString(PREF_AGE,"");
     }
