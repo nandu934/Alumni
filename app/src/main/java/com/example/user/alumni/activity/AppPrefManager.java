@@ -62,6 +62,9 @@ public class AppPrefManager {
         editor.apply();
     }
 
+    //AppPrefManager.setPrefName(MainActivity.this, name);
+    //etUserName.setText(AppPrefManager.getPrefName(MyProfile.this));
+
     public static String getPrefAge(Context context){
         return getSharedPreferences(context).getString(PREF_AGE,"");
     }
