@@ -1,4 +1,4 @@
-package com.example.user.alumni;
+package com.example.user.alumni.fcm;
 
 import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -19,8 +19,10 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
-       // sendRegistrationToServer(refreshedToken);
-
+        storeToken(refreshedToken);
+    }
+    private void storeToken(String token) {
+        SharedPrefManager.getInstance(getApplicationContext()).saveDeviceToken(token);
 
     }
 }

@@ -53,4 +53,11 @@ public class AppConfig {
     public static final String MOBILE = "mobile";
     public static final String CODE = "code";
     public static final String PASSWORD = "passoword";
+
+
+
+    public static final String URL_REGISTER_DEVICE = "http://www.netibiz.com/alumni/fcm/RegisterDevice.php";
+    public static final String URL_SEND_SINGLE_PUSH = "http://www.netibiz.com/alumni/fcm/sendSinglePush.php";
+    public static final String URL_SEND_MULTIPLE_PUSH = "http://www.netibiz.com/alumni/fcm/sendMultiplePush.php";
+    public static final String URL_FETCH_DEVICES = "http://www.netibiz.com/alumni/fcm/GetRegisteredDevices.php";
 }

@@ -283,7 +283,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
 //    private void check() {
 //        // Tag used to cancel the request
 //        String tag_string_req = "req_login";
