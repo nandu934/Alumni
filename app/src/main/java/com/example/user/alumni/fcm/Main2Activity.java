@@ -30,24 +30,24 @@ import java.util.Map;
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
 
     //defining views
-    private Button buttonSendPush;
-    private Button buttonRegister;
+    private Button ButtonSendPush;
+    private Button ButtonRegister;
     private EditText editTextEmail;
     private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         //getting views from xml
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        buttonSendPush = (Button) findViewById(R.id.buttonSendNotification);
+        ButtonRegister = (Button) findViewById(R.id.buttonRegister);
+        ButtonSendPush = (Button) findViewById(R.id.buttonSendNotification);
 
         //adding listener to view
-        buttonRegister.setOnClickListener(this);
-        buttonSendPush.setOnClickListener(this);
+        ButtonRegister.setOnClickListener(this);
+        ButtonSendPush.setOnClickListener(this);
     }
 
     //storing token to mysql server
@@ -99,12 +99,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if (view == buttonRegister) {
+        if (view == ButtonRegister) {
             sendTokenToServer();
         }
 
         //starting send notification activity
-        if (view == buttonSendPush) {
+        if (view == ButtonSendPush) {
             startActivity(new Intent(this, ActivitySendPushNotification.class));
         }
     }

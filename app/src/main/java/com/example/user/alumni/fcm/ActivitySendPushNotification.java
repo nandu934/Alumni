@@ -37,7 +37,6 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
     private ProgressDialog progressDialog;
 
     private EditText editTextTitle, editTextMessage, editTextImage;
-
     private boolean isSendAllChecked;
     private List<String> devices;
 
@@ -69,8 +68,7 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
         progressDialog.setMessage("Fetching Devices...");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppConfig.URL_FETCH_DEVICES,
-                new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppConfig.URL_FETCH_DEVICES, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();

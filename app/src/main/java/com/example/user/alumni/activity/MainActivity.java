@@ -21,6 +21,7 @@ import com.example.user.alumni.R;
 import com.example.user.alumni.app.AppConfig;
 import com.example.user.alumni.app.AppController;
 import com.example.user.alumni.event.Event_MainActivity;
+import com.example.user.alumni.fcm.Main2Activity;
 import com.example.user.alumni.helper.SQLiteHandler;
 import com.example.user.alumni.helper.SessionManager;
 import com.example.user.alumni.helper.User;
@@ -128,14 +129,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
 
-//            case R.id.groupcontact:
-//                Intent prof=new Intent(this,ProfileActivity.class);
-//                startActivity(prof);
+            case R.id.groupcontact:
+                Intent prof=new Intent(this,Main2Activity.class);
+                startActivity(prof);
+                finish();
+//                Intent group=new Intent(this,MyProfile.class);
+//                startActivity(group);
 //                finish();
-////                Intent group=new Intent(this,MyProfile.class);
-////                startActivity(group);
-////                finish();
-//                break;
+                break;
 
             case R.id.events:
                 Intent event=new Intent(this,Event_MainActivity.class);
