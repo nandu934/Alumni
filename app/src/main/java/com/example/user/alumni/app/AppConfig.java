@@ -55,9 +55,8 @@ public class AppConfig {
     public static final String PASSWORD = "passoword";
 
 
-
-    public static final String URL_REGISTER_DEVICE = "http://10.0.2.2/fcm/RegisterDevice.php";
-    public static final String URL_SEND_SINGLE_PUSH = "http://10.0.2.2/fcm/sendSinglePush.php";
-    public static final String URL_SEND_MULTIPLE_PUSH = "http://10.0.2.2/fcm/sendMultiplePush.php";
-    public static final String URL_FETCH_DEVICES = "http://10.0.2.2/fcm/GetRegisteredDevices.php";
+    public static final String URL_REGISTER_DEVICE = "http://www.netibiz.com/alumni/fcm/RegisterDevice.php";
+    public static final String URL_SEND_SINGLE_PUSH = "http://www.netibiz.com/alumni/fcm/sendSinglePush.php";
+    public static final String URL_SEND_MULTIPLE_PUSH = "http://www.netibiz.com/alumni/fcm/sendMultiplePush.php";
+    public static final String URL_FETCH_DEVICES = "http://www.netibiz.com/alumni/fcm/GetRegisteredDevices.php";
 }
