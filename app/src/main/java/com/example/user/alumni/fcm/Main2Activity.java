@@ -102,7 +102,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         if (view == ButtonRegister) {
             sendTokenToServer();
         }
-
         //starting send notification activity
         if (view == ButtonSendPush) {
             startActivity(new Intent(this, ActivitySendPushNotification.class));

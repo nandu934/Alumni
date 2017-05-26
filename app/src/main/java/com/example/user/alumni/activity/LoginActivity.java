@@ -14,13 +14,19 @@ package com.example.user.alumni.activity;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import com.android.volley.AuthFailureError;
         import com.android.volley.Request;
+        import com.android.volley.RequestQueue;
         import com.android.volley.Response;
         import com.android.volley.VolleyError;
         import com.android.volley.toolbox.StringRequest;
+        import com.android.volley.toolbox.Volley;
         import com.example.user.alumni.R;
         import com.example.user.alumni.app.AppConfig;
         import com.example.user.alumni.app.AppController;
+        import com.example.user.alumni.fcm.Main2Activity;
+        import com.example.user.alumni.fcm.MyVolley;
+        import com.example.user.alumni.fcm.SharedPrefManager;
         import com.example.user.alumni.helper.SQLiteHandler;
         import com.example.user.alumni.helper.SessionManager;
         import com.example.user.alumni.helper.User;
@@ -42,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String UID = "userid";
+    private ProgressDialog progressDialog;
+    private RequestQueue mRequestQueue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!email.isEmpty() && !password.isEmpty()) {
                     // login user
                     checkLogin(email, password);
+                    //sendTokenToServer();
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -124,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setMessage("Logging in ...");
         showDialog();
 
+        mRequestQueue = Volley.newRequestQueue(this);
         StringRequest strReq = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN, new Response.Listener<String>() {
 
             @Override
@@ -201,8 +211,54 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+        //AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+        mRequestQueue.add(strReq);
+    }
 
+    private void sendTokenToServer() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registering Device...");
+        progressDialog.show();
+
+        final String token = SharedPrefManager.getInstance(this).getDeviceToken();
+        final String emaill = inputEmail.getText().toString().trim();
+
+        if (token == null) {
+            progressDialog.dismiss();
+            Toast.makeText(this, "Token not generated", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConfig.URL_REGISTER_DEVICE,new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            Toast.makeText(LoginActivity.this, obj.getString("message"), Toast.LENGTH_LONG).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", emaill);
+                params.put("token", token);
+                return params;
+            }
+        };
+        //MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+        mRequestQueue.add(stringRequest);
     }
 
     private void showDialog() {

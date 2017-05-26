@@ -138,6 +138,12 @@ public class Profile_ok extends AppCompatActivity implements View.OnClickListene
                     intro_val = user.getString("introduction");
                     intro.setText(intro_val);
 
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    JSONArray jsonArray = jsonObject.getJSONArray("user");
+//                    JSONObject obj =jsonArray.getJSONObject(0);
+//                    intro_val = obj.getString("introduction");
+//                    intro.setText(intro_val);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //Toast.makeText(getApplicationContext(), "JSONError" + e.getMessage(), Toast.LENGTH_LONG).show();

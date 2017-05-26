@@ -58,6 +58,6 @@
         android:id="@+id/buttonSendPush"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Push" />
+        android:text="Send Push"/>
 
 </LinearLayout>
