@@ -2,22 +2,19 @@ package com.example.user.alumni.fcm;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.user.alumni.R;
 import com.example.user.alumni.app.AppConfig;
 
@@ -48,6 +45,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         //adding listener to view
         ButtonRegister.setOnClickListener(this);
         ButtonSendPush.setOnClickListener(this);
+        //new sendToken().execute();
     }
 
     //storing token to mysql server
@@ -96,6 +94,35 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         };
         MyVolley.getInstance(this).addToRequestQueue(stringRequest);
     }
+
+
+//    public class sendToken extends AsyncTask<Object, Object, Void> {
+//
+//        @Override
+//        protected void onPreExecute(){
+//            super.onPreExecute();
+//            //pDialog.setMessage("Please Wait ...");
+//            //showDialog();
+//            progressDialog.setMessage("Please wait...");
+//            progressDialog.setCancelable(false);
+//            progressDialog.show();
+//        }
+//        @Override
+//        protected Void doInBackground(Object... params) {
+//
+//                sendTokenToServer();
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void bmp) {
+//            super.onPostExecute(bmp);
+//            //hideDialog();
+//            // Dismiss the progress dialog
+//            if (progressDialog.isShowing())
+//                progressDialog.dismiss();
+//        }
+//    }
 
     @Override
     public void onClick(View view) {

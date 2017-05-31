@@ -89,7 +89,6 @@ public class Event_MainActivity extends AppCompatActivity {
         //call refreshCalendar to update calendar the view
         calendarView.refreshCalendar(currentCalendar);
 
-
         calendarView.refreshCalendar(currentCalendar);
         //Handling custom calendar events
         calendarView.setCalendarListener(new CalendarListener() {
@@ -111,11 +110,11 @@ public class Event_MainActivity extends AppCompatActivity {
         });
 
 
-        if(email.equals(admin)){
-            calendarView.setVisibility(View.VISIBLE);
-        } else {
-            opencal.setVisibility(View.VISIBLE);
-        }
+//        if(email.equals(admin)){
+//            calendarView.setVisibility(View.VISIBLE);
+//        } else {
+//            opencal.setVisibility(View.VISIBLE);
+//        }
 
 
         btn = (Button) findViewById(R.id.frag);

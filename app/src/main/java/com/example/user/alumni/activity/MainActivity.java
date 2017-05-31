@@ -1,7 +1,10 @@
 package com.example.user.alumni.activity;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,6 +26,8 @@ import com.example.user.alumni.app.AppConfig;
 import com.example.user.alumni.app.AppController;
 import com.example.user.alumni.event.Event_MainActivity;
 import com.example.user.alumni.fcm.Main2Activity;
+import com.example.user.alumni.fcm.MyVolley;
+import com.example.user.alumni.fcm.SharedPrefManager;
 import com.example.user.alumni.helper.SQLiteHandler;
 import com.example.user.alumni.helper.SessionManager;
 import com.example.user.alumni.helper.User;
@@ -41,7 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SQLiteHandler db;
     private SessionManager session;
     private ProgressDialog pDialog;
-    private String memberId;
+    private String memberId,email;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         settings= (ImageButton) findViewById(R.id.settings);
         settings.setOnClickListener(this);
 
-//        btnLogout = (Button) findViewById(R.id.btnLogout);
-//        btnLogout.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                logoutUser();
-//            }
-//        });
 
         // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
@@ -102,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //txtEmail.setText(email);
 
         // Logout button click event
+        email = AppPrefManager.getPrefEmail(MainActivity.this);
+        //new sendToken().execute();
 
     }
 
@@ -266,12 +267,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return params;
             }
         };
-
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-
     }
-
 
     private void showDialog() {
         if (!pDialog.isShowing())
@@ -283,56 +281,73 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             pDialog.dismiss();
     }
 
+    private void sendTokenToServer() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registering Device...");
+        progressDialog.show();
 
-//    private void check() {
-//        // Tag used to cancel the request
-//        String tag_string_req = "req_login";
-//        //pDialog.setMessage("Logging in ...");
-//        //showDialog();
-//        StringRequest strReq = new StringRequest(Request.Method.GET, AppConfig.URL_DEMO, new Response.Listener<String>() {
-//
-//            @Override
-//            public void onResponse(String response) {
-//                //Log.d(TAG, "Login Response: " + response.toString());
-//               // hideDialog();
-//
-//                try {
-//                    JSONObject jObj = new JSONObject(response);
-//                    boolean error = jObj.getBoolean("error");
-//
-//                    // Check for error node in json
-//                    if (!error) {
-//
-//                        JSONObject user = jObj.getJSONObject("user");
-//                        String logid = user.getString("logid");
-//                        User user1 = new User();
-//                        user1.setLogid(logid);
-//
-//
-//                    } else {
-//                        // Error in login. Get the error message
-//                        String errorMsg = jObj.getString("error_msg");
-//                        Toast.makeText(getApplicationContext(), errorMsg, Toast.LENGTH_LONG).show();
-//                    }
-//                } catch (JSONException e) {
-//                    // JSON error
-//                    e.printStackTrace();
-//                    Log.v("json_error", e.getMessage());
-//                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                //Log.e(TAG, "Login Error: " + error.getMessage());
-//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//                //hideDialog();
-//            }
-//        });
-//
-//        // Adding request to request queue
-//        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
-//    }
+        final String token = SharedPrefManager.getInstance(this).getDeviceToken();
+        //final String emaill = inputEmail.getText().toString().trim();
 
+        if (token == null) {
+            progressDialog.dismiss();
+            Toast.makeText(this, "Token not generated", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConfig.URL_REGISTER_DEVICE,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    Toast.makeText(MainActivity.this, obj.getString("message"), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("token", token);
+                return params;
+            }
+        };
+        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+        //mRequestQueue.add(stringRequest);
+    }
+    public class sendToken extends AsyncTask<Object, Object, Void> {
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+            pDialog.setMessage("Please Wait ...");
+            showDialog();
+        }
+        @Override
+        protected Void doInBackground(Object... params) {
+
+            sendTokenToServer();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void bmp) {
+            super.onPostExecute(bmp);
+            //hideDialog();
+            // Dismiss the progress dialog
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
+        }
+    }
 }

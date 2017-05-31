@@ -121,6 +121,8 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+       // new sendToken().execute();
     }
 
     /**
@@ -215,51 +217,78 @@ public class LoginActivity extends AppCompatActivity {
         mRequestQueue.add(strReq);
     }
 
-    private void sendTokenToServer() {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Registering Device...");
-        progressDialog.show();
-
-        final String token = SharedPrefManager.getInstance(this).getDeviceToken();
-        final String emaill = inputEmail.getText().toString().trim();
-
-        if (token == null) {
-            progressDialog.dismiss();
-            Toast.makeText(this, "Token not generated", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConfig.URL_REGISTER_DEVICE,new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        try {
-                            JSONObject obj = new JSONObject(response);
-                            Toast.makeText(LoginActivity.this, obj.getString("message"), Toast.LENGTH_LONG).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("email", emaill);
-                params.put("token", token);
-                return params;
-            }
-        };
-        //MyVolley.getInstance(this).addToRequestQueue(stringRequest);
-        mRequestQueue.add(stringRequest);
-    }
+//    private void sendTokenToServer() {
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Registering Device...");
+//        progressDialog.show();
+//
+//        final String token = SharedPrefManager.getInstance(this).getDeviceToken();
+//        final String emaill = inputEmail.getText().toString().trim();
+//
+//        if (token == null) {
+//            progressDialog.dismiss();
+//            Toast.makeText(this, "Token not generated", Toast.LENGTH_LONG).show();
+//            return;
+//        }
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConfig.URL_REGISTER_DEVICE,new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        progressDialog.dismiss();
+//                        try {
+//                            JSONObject obj = new JSONObject(response);
+//                            Toast.makeText(LoginActivity.this, obj.getString("message"), Toast.LENGTH_LONG).show();
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+//                    }
+//                }) {
+//
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("email", emaill);
+//                params.put("token", token);
+//                return params;
+//            }
+//        };
+//        //MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+//        mRequestQueue.add(stringRequest);
+//    }
+//    public class sendToken extends AsyncTask<Object, Object, Void> {
+//
+//        @Override
+//        protected void onPreExecute(){
+//            super.onPreExecute();
+//            //pDialog.setMessage("Please Wait ...");
+//            //showDialog();
+//            progressDialog.setMessage("Please wait...");
+//            progressDialog.setCancelable(false);
+//            progressDialog.show();
+//        }
+//        @Override
+//        protected Void doInBackground(Object... params) {
+//
+//            sendTokenToServer();
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void bmp) {
+//            super.onPostExecute(bmp);
+//            //hideDialog();
+//            // Dismiss the progress dialog
+//            if (progressDialog.isShowing())
+//                progressDialog.dismiss();
+//        }
+//    }
 
     private void showDialog() {
         if (!pDialog.isShowing())
