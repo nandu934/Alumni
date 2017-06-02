@@ -192,9 +192,6 @@ public class AppPrefManager {
         editor.apply();
     }
 
-
-
-
     public static int getAID(Context context) {
         return getSharedPreferences(context).getInt(PREF_ID, 0);
     }

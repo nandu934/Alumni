@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="net.simplifiedcoding.firebasecloudmessaging.ActivitySendPushNotification">
+    tools:context="com.example.user.alumni.fcm.ActivitySendPushNotification">
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -52,12 +52,13 @@
         android:id="@+id/editTextImageUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:hint="Enter Image URL (Optional) " />
 
     <Button
         android:id="@+id/buttonSendPush"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Push"/>
+        android:text="Send"/>
 
 </LinearLayout>

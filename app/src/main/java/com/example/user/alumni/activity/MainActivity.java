@@ -140,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.events:
+                //Intent event=new Intent(this,Event_MainActivity.class);
                 Intent event=new Intent(this,Event_MainActivity.class);
                 startActivity(event);
                 finish();

@@ -2,13 +2,17 @@ package com.example.user.alumni.event;
 
 import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import com.example.user.alumni.R;
+import com.example.user.alumni.fcm.Main2Activity;
+
 import java.util.Calendar;
 
 public class Create_Event extends AppCompatActivity {
@@ -17,11 +21,13 @@ public class Create_Event extends AppCompatActivity {
     private TextView tv1;
     private BroadcastReceiver broadcastReceiver;
     private int mYear, mMonth, mDay, mHour, mMinute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create__event);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ed_time = (EditText) findViewById(R.id.time_view_edit);
         edittext = (EditText) findViewById(R.id.event_date);
         Bundle bundle = getIntent().getExtras();
@@ -58,5 +64,19 @@ public class Create_Event extends AppCompatActivity {
 //            }
 //        };
 //        registerReceiver(broadcastReceiver, new IntentFilter(MyFirebaseInstanceIDService.TOKEN_BROADCAST));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this,Event_MainActivity.class);
+                startActivity(intent);
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -1,9 +1,11 @@
 package com.example.user.alumni.fcm;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.user.alumni.R;
+import com.example.user.alumni.activity.MainActivity;
 import com.example.user.alumni.app.AppConfig;
 
 import org.json.JSONArray;
@@ -40,12 +43,12 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
     private boolean isSendAllChecked;
     private List<String> devices;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_push_notification);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         spinner = (Spinner) findViewById(R.id.spinnerDevices);
         buttonSendPush = (Button) findViewById(R.id.buttonSendPush);
@@ -101,7 +104,6 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
 
                     }
                 }) {
-
         };
         MyVolley.getInstance(this).addToRequestQueue(stringRequest);
     }
@@ -216,5 +218,18 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
     public void onClick(View view) {
         //calling the method send push on button click
         sendPush();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this, Main2Activity.class);
+                startActivity(intent);
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
