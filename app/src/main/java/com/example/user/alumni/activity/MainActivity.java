@@ -21,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.user.alumni.Manifest;
 import com.example.user.alumni.R;
 import com.example.user.alumni.app.AppConfig;
 import com.example.user.alumni.app.AppController;
@@ -180,7 +181,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(it);
                 this.finish();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -212,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     // Check for error node in json
                     if (!error) {
-
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
                         Log.d("namefromProfile",name);

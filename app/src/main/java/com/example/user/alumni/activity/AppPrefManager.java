@@ -201,8 +201,4 @@ public class AppPrefManager {
         editor.putInt(PREF_ID, newValue);
         editor.apply();
     }
-
-
-
-
 }
