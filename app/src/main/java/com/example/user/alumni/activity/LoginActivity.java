@@ -5,6 +5,7 @@ package com.example.user.alumni.activity;
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.AsyncTask;
+        import android.preference.PreferenceManager;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.util.Log;
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String UID = "userid";
     private ProgressDialog progressDialog;
     private RequestQueue mRequestQueue;
+    private String email,password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,20 +76,12 @@ public class LoginActivity extends AppCompatActivity {
         // Session manager
         session = new SessionManager(getApplicationContext());
 
-        // Check if user is already logged in or not
-//        if (session.isLoggedIn()) {
-//            // User is already logged in. Take him to main activity
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-
         // Login button Click Event
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                String email = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+                 email = inputEmail.getText().toString().trim();
+                 password = inputPassword.getText().toString().trim();
                 AppPrefManager.setPrefEmail(LoginActivity.this, email);
 
                 // Check for empty data in the form
@@ -124,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 
        // new sendToken().execute();
     }
+
 
     /**
      * function to verify login details in mysql db
@@ -164,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.v("logid", String.valueOf(id));
 
                         AppPrefManager.setUserId(LoginActivity.this, id);
-
+                        AppPrefManager.setUserName(LoginActivity.this, email);
 
                         //String age = user.getString("age");
                         //String email = user.getString("email");

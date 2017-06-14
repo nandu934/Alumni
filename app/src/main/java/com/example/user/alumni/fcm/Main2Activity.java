@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -52,7 +53,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //getting views from xml
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -63,6 +63,11 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         ButtonRegister.setOnClickListener(this);
         ButtonSendPush.setOnClickListener(this);
         //new sendToken().execute();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     //storing token to mysql server

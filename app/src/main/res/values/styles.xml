@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -22,7 +24,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    //************************************************************************************************
+    //**********************************************************************************************
 
     <style name="ThemeSpinner">
         <!-- Color when pressed -->
@@ -31,4 +33,48 @@
         <item name="colorControlNormal">#0b315b</item>
     </style>
 
+
+
+
+        <style name="Widget" />
+
+    <style name="Widget.AppTheme">
+    </style>
+
+        <style name="Widget.AppTheme.EventEditView">
+            <item name="android:paddingLeft">@dimen/padding</item>
+            <item name="android:paddingRight">@dimen/padding</item>
+        </style>
+
+        <style name="Widget.AppTheme.EventEditView.TextView">
+            <item name="android:gravity">center_vertical</item>
+        </style>
+
+        <style name="Widget.AppTheme.EventEditView.TextView.Selectable">
+            <item name="android:background">?attr/selectableItemBackground</item>
+        </style>
+
+        <style name="Widget.AppTheme.EventEditView.TextView.Selectable.End">
+            <item name="android:gravity">center_vertical|end</item>
+        </style>
+
+        <style name="TextAppearance.AppTheme.Hint" parent="TextAppearance.Design.Hint" />
+
+        <style name="TextAppearance.AppTheme.Hint.Disabled">
+            <item name="android:textColor">?android:attr/textColorHint</item>
+        </style>
+
+        <style name="Widget.AppTheme.TextView" />
+
+        <style name="Widget.AppTheme.TextView.Weather">
+            <item name="android:gravity">center_vertical</item>
+            <item name="android:drawablePadding">@dimen/padding_text</item>
+            <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+            <item name="android:paddingTop">@dimen/padding_text</item>
+            <item name="android:paddingBottom">@dimen/padding_text</item>
+        </style>
+
+        <style name="Widget.AppTheme.Drawer">
+            <item name="android:layout_width">match_parent</item>
+        </style>
 </resources>

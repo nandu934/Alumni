@@ -23,17 +23,9 @@ public class AppPrefManager {
 
     private static final String USER_INTRODUCTION = "user_intro";
 
-    //**************user_workexperience***************
-
-    private static final String WORKEXP_COMPANY = "workexp_company";
-    private static final String WORKEXP_TITLE = "workexp_title";
-    private static final String WORKEXP_LOCATION = "workexp_location";
-    private static final String WORKEXP_STARTDATE = "workexp_startdate";
-    private static final String WORKEXP_ENDDATE = "workexp_enddate";
-    private static final String WORKEXP_JOBDESCRIPTION = "workexp_jobdescription";
-
-
     private static final String PREF_ID = "pref_id";
+
+    private static final String PREF_USER_NAME= "username";
 
     private AppPrefManager() {
     }
@@ -130,75 +122,22 @@ public class AppPrefManager {
         editor.putString(USER_INTRODUCTION, newValue);
         editor.apply();
     }
-//****************************USER_WORKEXPERIENCE****************************************
 
-    public static String getWorkexpCompany(Context context){
-        return getSharedPreferences(context).getString(WORKEXP_COMPANY,"");
+
+    public static void setUserName(Context ctx, String userName) {
+        SharedPreferences.Editor edit = getSharedPreferences(ctx).edit();
+        edit.putString(PREF_USER_NAME, userName);
+        edit.commit();
     }
 
-    public static void setWorkexpCompany(Context context, String newValue){
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(WORKEXP_COMPANY, newValue);
-        editor.apply();
+    public static String getUserName(Context ctx) {
+        return getSharedPreferences(ctx).getString(PREF_USER_NAME, "");
     }
 
-    public static String getWorkexpTitle(Context context){
-        return getSharedPreferences(context).getString(WORKEXP_TITLE,"");
-    }
-
-    public static void setWorkexpTitle(Context context, String newValue){
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(WORKEXP_TITLE, newValue);
-        editor.apply();
-    }
-
-    public static String getWorkexpLocation(Context context){
-        return getSharedPreferences(context).getString(WORKEXP_LOCATION,"");
-    }
-
-    public static void setWorkexpLocation(Context context, String newValue){
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(WORKEXP_LOCATION, newValue);
-        editor.apply();
-    }
-
-    public static String getWorkexpStartdate(Context context){
-        return getSharedPreferences(context).getString(WORKEXP_STARTDATE,"");
-    }
-
-    public static void setWorkexpStartdate(Context context, String newValue){
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(WORKEXP_STARTDATE, newValue);
-        editor.apply();
-    }
-
-    public static String getWorkexpEnddate(Context context){
-        return getSharedPreferences(context).getString(WORKEXP_ENDDATE,"");
-    }
-
-    public static void setWorkexpEnddate(Context context, String newValue){
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(WORKEXP_ENDDATE, newValue);
-        editor.apply();
-    }
-
-    public static String getWorkexpJobdescription(Context context){
-        return getSharedPreferences(context).getString(WORKEXP_JOBDESCRIPTION,"");
-    }
-
-    public static void setWorkexpJobdescription(Context context, String newValue){
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(WORKEXP_JOBDESCRIPTION, newValue);
-        editor.apply();
-    }
-
-    public static int getAID(Context context) {
-        return getSharedPreferences(context).getInt(PREF_ID, 0);
-    }
-
-    public static void setAID(Context context, int newValue) {
-        final SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putInt(PREF_ID, newValue);
-        editor.apply();
+    public static void clearUserName(Context ctx)
+    {
+        SharedPreferences.Editor edit = getSharedPreferences(ctx).edit();
+        edit.clear(); //clear all stored data
+        edit.commit();
     }
 }

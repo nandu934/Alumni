@@ -48,6 +48,8 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_push_notification);
 
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         spinner = (Spinner) findViewById(R.id.spinnerDevices);

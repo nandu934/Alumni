@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:hint="Skill level" />
+                android:hint="Skill level"/>
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
@@ -51,8 +51,6 @@
             android:layout_marginRight="20dp"
             android:visibility="visible"
             android:theme="@style/ThemeSpinner"/>
-
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -69,7 +67,6 @@
                 android:id="@+id/skill_delete"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
-
     </LinearLayout>
 </RelativeLayout>
 

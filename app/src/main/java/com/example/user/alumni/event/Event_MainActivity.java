@@ -308,7 +308,7 @@ public class Event_MainActivity extends AppCompatActivity {
                 makeNewCalendarEntry("Test", "Add event", "Somewhere",tenMinutesFromNow,tenMinutesFromNow+oneHour,false,true,calendar_id,3);
             }
         }
-        /*Intent intent = new Intent(MainActivity.this,AddEventService.class);
+        /*Intent intent = new Intent(MainActivity_cal.this,AddEventService.class);
         startService(intent);*/
     }
 

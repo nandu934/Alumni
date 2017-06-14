@@ -1,5 +1,6 @@
 package com.example.user.alumni.activity;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -25,6 +26,7 @@ import com.example.user.alumni.Manifest;
 import com.example.user.alumni.R;
 import com.example.user.alumni.app.AppConfig;
 import com.example.user.alumni.app.AppController;
+import com.example.user.alumni.calendar.MainActivity_cal;
 import com.example.user.alumni.event.Event_MainActivity;
 import com.example.user.alumni.fcm.Main2Activity;
 import com.example.user.alumni.fcm.MyVolley;
@@ -56,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        //ActionBar actionBar = getActionBar();
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -105,6 +108,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         email = AppPrefManager.getPrefEmail(MainActivity.this);
         //new sendToken().execute();
 
+
+        if(AppPrefManager.getUserName(MainActivity.this).length() == 0)
+        {
+            // call Login Activity
+            Intent i = new Intent(this,LoginActivity.class);
+            startActivity(i);
+        }
+        else
+        {
+            // Stay at the current activity.
+            Intent i = new Intent(this,MainActivity.class);
+            startActivity(i);
+        }
+
+
     }
 
     /**
@@ -142,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.events:
                 //Intent event=new Intent(this,Event_MainActivity.class);
-                Intent event=new Intent(this,Event_MainActivity.class);
+                Intent event=new Intent(this,MainActivity_cal.class);
                 startActivity(event);
                 finish();
                 break;
@@ -160,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; go home
-                Intent intent = new Intent(this, LoginActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 this.finish();
                 //return true;
@@ -172,15 +190,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                this.finish();
 
                 checkID(memberId);
-
                 //return true;
                 break;
             case R.id.logout:
-                session.setLogin(false);
+                AppPrefManager.clearUserName(this);
                 Intent it = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(it);
-                this.finish();
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

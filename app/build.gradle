@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+
     defaultConfig {
         applicationId "com.example.user.alumni"
         minSdkVersion 17
@@ -11,6 +14,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        buildConfigField "String", "FORECAST_IO_API_KEY", "\"97b232a76771e4bd5fcd985da278ac0d\""
     }
     buildTypes {
         release {
@@ -18,6 +22,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        htmlReport false
+        xmlReport false
+        textReport true
+        warningsAsErrors true
+        abortOnError true
+        explainIssues false
+        absolutePaths false
+        ignore "InvalidPackage" // square/okio#58
+    }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            exceptionFormat 'full'
+        }
+        maxHeapSize = '2048m'
+        maxParallelForks = 1
+        forkEvery = 1
+        jacoco {
+            includeNoLocationClasses = true
+        }
+    }
+}
+
+ext {
+    supportVersion = '25.2.0'
+    retrofit2Version = '2.0.0'
+    robolectricVersion = '3.3.2'
+    assertjVersion = '1.1.1'
 }
 
 dependencies {
@@ -26,11 +61,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-//    compile 'com.google.firebase:firebase-messaging:10.0.1'
-//    compile 'com.google.firebase:firebase-database:10.0.1'
-//    compile 'com.google.firebase:firebase-core:10.0.1'
-//    compile 'com.google.firebase:firebase-auth:10.0.1'
-//    compile 'com.google.firebase:firebase-config:10.0.1'
+
     //compile 'com.android.support:multidex:1.0.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:appcompat-v7:25.2.0'
@@ -46,5 +77,36 @@ dependencies {
     compile 'com.github.npanigrahy:Custom-Calendar-View:v1.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+
+    testCompile "org.robolectric:robolectric:$robolectricVersion",
+            "org.robolectric:shadows-support-v4:$robolectricVersion",
+            'org.mockito:mockito-core:1.9.5+',
+            'junit:junit:4.12'
+    testCompile("com.squareup.assertj:assertj-android:$assertjVersion") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 }
+
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    reports {
+        xml.enabled true
+        xml.destination "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+        html.destination "${buildDir}/reports/coverage"
+    }
+
+    executionData = files "${buildDir}/jacoco/testDebugUnitTest.exec"
+    sourceDirectories = files android.sourceSets.main.java.srcDirs
+    classDirectories = fileTree(dir: "${buildDir}/intermediates/classes/debug",
+            exclude: [ '**/R.class', '**/R$*.class' ])
+
+    doLast {
+        println "coveralls report has been generated to file://${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+        println "coverage report generated at file://${reports.html.destination}/index.html"
+    }
+}
+
+
 apply plugin: 'com.google.gms.google-services'

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,10 +58,8 @@ public class Profile_ok extends AppCompatActivity implements View.OnClickListene
     private Edu_adapter eAdapter;
     private VolExp_adapter vAdapter;
     private Skill_adapter sAdapter;
-
     private ProgressDialog pDialog;
     private TextView intro, skillname,skilllevel;
-
     private ImageButton ib,ib1,ib2,ib3,ib4;
     private String userId,intro_val,skillname_val,skilllev_val;
     private CircleImageView img;
@@ -73,7 +72,7 @@ public class Profile_ok extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_ok);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         ib = (ImageButton) findViewById(R.id.prof_intro);
@@ -116,6 +115,11 @@ public class Profile_ok extends AppCompatActivity implements View.OnClickListene
 //        //recyclerView.setHasFixedSize(true);
 //        layoutManager = new LinearLayoutManager(this);
 //        recyclerView.setLayoutManager(layoutManager);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
 

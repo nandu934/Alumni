@@ -254,7 +254,7 @@ public class MyProfile extends AppCompatActivity {
                         etGender.setText(AppPrefManager.getPrefGender(MyProfile.this));
                         etMobile.setText(AppPrefManager.getPrefMobile(MyProfile.this));
                         // Launch main activity
-                        //Intent intent = new Intent(MyProfile.this,MainActivity.class);
+                        //Intent intent = new Intent(MyProfile.this,MainActivity_cal.class);
                         //startActivity(intent);
                         //finish();
                     } else {
@@ -514,7 +514,7 @@ public class MyProfile extends AppCompatActivity {
 //                        //db.addUser(name, age, email, gender, mobile, uid, created_at);
 //
 //                        // Launch main activity
-//                        //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                        //Intent intent = new Intent(LoginActivity.this, MainActivity_cal.class);
 //                        //startActivity(intent);
 //                        //finish();
 //                    } else {
