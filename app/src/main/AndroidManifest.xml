@@ -81,7 +81,8 @@
             android:name=".activity.MyProfile"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.Profile_ok" />
+        <activity android:name=".activity.Profile_ok"
+            android:label="Profile"/>
         <activity android:name=".activity.Exp_Edu" />
         <activity android:name=".activity.Exp_return" />
         <activity android:name=".activity.Edu_return" />

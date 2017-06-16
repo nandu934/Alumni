@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,6 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
     private RadioGroup radioGroup;
     private Spinner spinner;
     private ProgressDialog progressDialog;
-
     private EditText editTextTitle, editTextMessage, editTextImage;
     private boolean isSendAllChecked;
     private List<String> devices;
@@ -48,22 +48,21 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_push_notification);
 
-
-
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         spinner = (Spinner) findViewById(R.id.spinnerDevices);
         buttonSendPush = (Button) findViewById(R.id.buttonSendPush);
-
         editTextTitle = (EditText) findViewById(R.id.editTextTitle);
         editTextMessage = (EditText) findViewById(R.id.editTextMessage);
         editTextImage = (EditText) findViewById(R.id.editTextImageUrl);
-
         devices = new ArrayList<>();
-
         radioGroup.setOnCheckedChangeListener(this);
         buttonSendPush.setOnClickListener(this);
-
         loadRegisteredDevices();
     }
 
@@ -134,14 +133,12 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-
                         Toast.makeText(ActivitySendPushNotification.this, response, Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                     }
                 }) {
             @Override
@@ -212,7 +209,6 @@ public class ActivitySendPushNotification extends AppCompatActivity implements R
                 isSendAllChecked = false;
                 spinner.setEnabled(true);
                 break;
-
         }
     }
 

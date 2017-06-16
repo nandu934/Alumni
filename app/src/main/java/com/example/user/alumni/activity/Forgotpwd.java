@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,11 +23,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.user.alumni.R;
 import com.example.user.alumni.app.AppConfig;
 import com.example.user.alumni.app.AppController;
-import com.example.user.alumni.helper.User;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +43,10 @@ public class Forgotpwd extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpwd);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -71,7 +72,6 @@ public class Forgotpwd extends AppCompatActivity implements View.OnClickListener
 
             case R.id.fp_btn:
                 if (!isResetInitiated) {
-
 
                     email = ed_email.getText().toString();
                     if (!email.isEmpty()) {

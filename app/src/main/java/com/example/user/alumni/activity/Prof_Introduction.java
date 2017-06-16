@@ -3,6 +3,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +36,10 @@ public class Prof_Introduction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof__introduction);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         // Progress dialog
         userId = Integer.toString(AppPrefManager.getUserId(Prof_Introduction.this));
         Log.v("uidfromintro",userId);
@@ -64,7 +68,7 @@ public class Prof_Introduction extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Register Response: " + response.toString());
-                hideDialog();
+                //hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -103,7 +107,6 @@ public class Prof_Introduction extends AppCompatActivity {
                 hideDialog();
             }
         }) {
-
             @Override
             protected Map<String, String> getParams() {
                 // Posting params to register url
@@ -113,7 +116,6 @@ public class Prof_Introduction extends AppCompatActivity {
                 return params;
             }
         };
-
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }

@@ -3,6 +3,7 @@ package com.example.user.alumni.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,7 +71,11 @@ public class Prof_Skills extends AppCompatActivity {
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         userid = Integer.toString(AppPrefManager.getUserId(Prof_Skills.this));
         skillname= (EditText)findViewById(R.id.skillname);
         //skilllevel =(EditText)findViewById(R.id.skilllevel);

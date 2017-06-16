@@ -121,8 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent i = new Intent(this,MainActivity.class);
             startActivity(i);
         }
-
-
     }
 
     /**
@@ -172,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
