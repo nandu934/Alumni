@@ -46,6 +46,8 @@ public class AppConfig {
     public static String URL_VOL_DELETE = "http://www.netibiz.com/alumni/user_vol_delete.php";
     public static String URL_SKILL_UPDATE = "http://www.netibiz.com/alumni/user_skill_update.php";
     public static String URL_SKILL_DELETE = "http://www.netibiz.com/alumni/user_skill_delete.php";
+    public static String URL_CONTACTS_VIEW = "http://www.netibiz.com/alumni/contacts_view.php";
+    public static String URL_CONTACTS_ROOT = "http://www.netibiz.com";
 
     public static final String IS_LOGGED_IN = "isLoggedIn";
     public static final String NAME = "name";

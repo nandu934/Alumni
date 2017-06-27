@@ -128,7 +128,6 @@ public class MyProfile extends AppCompatActivity {
                 memberMobile = etMobile.getText().toString();
 //                userId = Integer.toString(AppPrefManager.getUserId(MyProfile.this));
 //                Log.v("useriddddddddddd",userId);
-
                 updateProf(userId,memberUserName,memberAge,memberGender,memberMobile);
             }
         });
@@ -212,8 +211,6 @@ public class MyProfile extends AppCompatActivity {
 
 
 //**********************************************************************
-
-
 
     private void updateProf(final String userId, final String name, final String age, final String gender, final String mobile) {
         // Tag used to cancel the request

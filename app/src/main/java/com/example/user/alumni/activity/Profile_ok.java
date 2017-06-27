@@ -36,6 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -271,11 +272,11 @@ public class Profile_ok extends AppCompatActivity implements View.OnClickListene
 
                 try {
                     JSONArray jArray = new JSONArray(response);
-
                     // Extract data from json and store into ArrayList as class objects
                     for(int i=0;i<jArray.length();i++){
                         JSONObject json_data = jArray.getJSONObject(i);
                         EducationData eduData = new EducationData();
+
 //                        eduData.school= json_data.getString("school");
 //                        eduData.degree= json_data.getString("degree");
 //                        eduData.fieldofstudy= json_data.getString("fieldofstudy");
@@ -285,7 +286,6 @@ public class Profile_ok extends AppCompatActivity implements View.OnClickListene
 //                        eduData.ed_enddate= json_data.getString("ed_enddate");
 //                        eduData.ed_description= json_data.getString("ed_jobdescription");
 //                        dataArrayList.add(eduData);
-
 
                         eduData.setSchool(json_data.getString("school"));
                         eduData.setDegree(json_data.getString("degree"));

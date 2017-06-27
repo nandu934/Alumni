@@ -195,7 +195,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                         // Inserting row in users table
                         db.addUser(name, age, email, gender, mobile, created_at);
-
                         Toast.makeText(getApplicationContext(), "successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
                         // Launch login activity

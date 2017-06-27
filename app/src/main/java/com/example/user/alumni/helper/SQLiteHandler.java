@@ -48,7 +48,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + KEY_EMAIL + " TEXT UNIQUE," + KEY_GENDER + " TEXT," + KEY_MOB + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
-
         Log.d(TAG, "Database tables created");
     }
 

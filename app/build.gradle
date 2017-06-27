@@ -61,24 +61,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-
     //compile 'com.android.support:multidex:1.0.0'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
-    compile 'com.android.support:cardview-v7:25.2.0'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
-    compile 'com.hbb20:ccp:1.4'
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
-    compile 'net.gotev:uploadservice:2.1'
-    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
-    compile 'com.github.npanigrahy:Custom-Calendar-View:v1.1'
-    compile 'com.google.firebase:firebase-messaging:10.0.1'
-    testCompile 'junit:junit:4.12'
-    compile 'com.squareup.retrofit2:retrofit:2.0.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+
 
     testCompile "org.robolectric:robolectric:$robolectricVersion",
             "org.robolectric:shadows-support-v4:$robolectricVersion",
@@ -87,6 +71,23 @@ dependencies {
     testCompile("com.squareup.assertj:assertj-android:$assertjVersion") {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.hbb20:ccp:1.4'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'net.gotev:uploadservice:2.1'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+    compile 'com.github.npanigrahy:Custom-Calendar-View:v1.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    testCompile 'junit:junit:4.12'
 }
 
 
@@ -100,7 +101,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     executionData = files "${buildDir}/jacoco/testDebugUnitTest.exec"
     sourceDirectories = files android.sourceSets.main.java.srcDirs
     classDirectories = fileTree(dir: "${buildDir}/intermediates/classes/debug",
-            exclude: [ '**/R.class', '**/R$*.class' ])
+            exclude: ['**/R.class', '**/R$*.class'])
 
     doLast {
         println "coveralls report has been generated to file://${buildDir}/reports/jacoco/test/jacocoTestReport.xml"

@@ -142,7 +142,6 @@ public class Prof_Introduction_2 extends AppCompatActivity {
             if (!pDialog.isShowing())
                 pDialog.show();
         }
-
         private void hideDialog() {
             if (pDialog.isShowing())
                 pDialog.dismiss();

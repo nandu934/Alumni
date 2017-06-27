@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txtName;
     private TextView txtEmail;
     private Button btnLogout;
-    ImageButton profil,groupcontact,events,settings;
+    ImageButton profil,groupcontact,events,notif,settings;
     private SQLiteHandler db;
     private SessionManager session;
     private ProgressDialog pDialog;
@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         profil.setOnClickListener(this);
         groupcontact= (ImageButton) findViewById(R.id.groupcontact);
         groupcontact.setOnClickListener(this);
+        notif= (ImageButton) findViewById(R.id.noitification);
+        notif.setOnClickListener(this);
         events= (ImageButton) findViewById(R.id.events);
         events.setOnClickListener(this);
         settings= (ImageButton) findViewById(R.id.settings);
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.groupcontact:
-                Intent prof=new Intent(this,Main2Activity.class);
+                Intent prof=new Intent(this,Contacts.class);
                 startActivity(prof);
                 finish();
 //                Intent group=new Intent(this,MyProfile.class);
@@ -163,6 +165,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
 
+            case R.id.noitification:
+                //Intent event=new Intent(this,Event_MainActivity.class);
+                Intent noti=new Intent(this,Main2Activity.class);
+                startActivity(noti);
+                finish();
+                break;
+
             case R.id.settings:
 //                Intent settings=new Intent(this,AB_main.class);
 //                startActivity(settings);
@@ -170,7 +179,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

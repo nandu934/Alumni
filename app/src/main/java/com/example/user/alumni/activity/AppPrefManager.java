@@ -123,6 +123,7 @@ public class AppPrefManager {
         editor.apply();
     }
 
+    //*****************for auto login*************************************************
 
     public static void setUserName(Context ctx, String userName) {
         SharedPreferences.Editor edit = getSharedPreferences(ctx).edit();
