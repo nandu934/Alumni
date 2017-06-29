@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.user.alumni.Manifest;
 import com.example.user.alumni.R;
+import com.example.user.alumni.Recyclerview.ImageRecycler;
 import com.example.user.alumni.app.AppConfig;
 import com.example.user.alumni.app.AppController;
 import com.example.user.alumni.calendar.MainActivity_cal;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txtName;
     private TextView txtEmail;
     private Button btnLogout;
-    ImageButton profil,groupcontact,events,notif,settings;
+    ImageButton profil,groupcontact,events,img,notif,settings;
     private SQLiteHandler db;
     private SessionManager session;
     private ProgressDialog pDialog;
@@ -80,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notif.setOnClickListener(this);
         events= (ImageButton) findViewById(R.id.events);
         events.setOnClickListener(this);
+        img= (ImageButton) findViewById(R.id.photo);
+        img.setOnClickListener(this);
         settings= (ImageButton) findViewById(R.id.settings);
         settings.setOnClickListener(this);
 
@@ -162,6 +165,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Intent event=new Intent(this,Event_MainActivity.class);
                 Intent event=new Intent(this,MainActivity_cal.class);
                 startActivity(event);
+                finish();
+                break;
+
+            case R.id.photo:
+                //Intent event=new Intent(this,Event_MainActivity.class);
+                Intent img=new Intent(this,ImageRecycler.class);
+                startActivity(img);
                 finish();
                 break;
 

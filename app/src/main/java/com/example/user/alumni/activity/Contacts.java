@@ -112,6 +112,7 @@ public class Contacts extends AppCompatActivity implements ListView.OnItemClickL
         //Creating an array adapter for list view
         ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.contact_list,items);
 
+
         //Setting adapter to listview
         listView.setAdapter(adapter);
     }

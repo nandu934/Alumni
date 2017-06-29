@@ -242,7 +242,6 @@ public class RegisterActivity extends AppCompatActivity {
                 hideDialog();
             }
         }) {
-
             @Override
             protected Map<String, String> getParams() {
                 // Posting params to register url
@@ -254,7 +253,6 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put(AppConfig.MOBILE, mobile);
                 params.put("password", password);
 
-
                 return params;
             }
         };
@@ -262,7 +260,6 @@ public class RegisterActivity extends AppCompatActivity {
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
-
 
     private void showDialog() {
         if (!pDialog.isShowing())
