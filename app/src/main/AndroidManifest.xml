@@ -130,7 +130,8 @@
 
         <activity android:name=".activity.Contacts" />
         <activity android:name=".activity.ShowContactsDetails" />
-        <activity android:name=".Recyclerview.ImageRecycler"></activity>
+        <activity android:name=".Recyclerview.ImageRecycler" />
+        <activity android:name=".Image.Main3Activity" />
     </application>
 
 </manifest>
